@@ -6,7 +6,7 @@
 
 namespace MAX31865 {
 
-    using SPIDevice = Utility::SPIDevice;
+    using SPIDevice = ESP32_Utility::SPIDevice;
 
     enum struct RA : std::uint8_t {
         CONFIG = 0x00,

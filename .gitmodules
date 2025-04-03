@@ -1,3 +1,6 @@
 [submodule "/home/franek/Documents/esp-idf/esp-idf-max31865/components/utility"]
 	path = /home/franek/Documents/esp-idf/esp-idf-max31865/components/utility
 	url = https://github.com/franciszekjanicki/esp32-utility.git
+[submodule "/home/franek/Documents/esp_idf/esp_idf_max31865/components/esp32_utility"]
+	path = /home/franek/Documents/esp_idf/esp_idf_max31865/components/esp32_utility
+	url = https://github.com/franciszekjanicki/esp32_utility.git

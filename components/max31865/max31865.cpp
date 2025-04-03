@@ -5,8 +5,6 @@
 #include <optional>
 #include <utility>
 
-using SPIDevice = Utility::SPIDevice;
-
 namespace MAX31865 {
 
     MAX31865::MAX31865(SPIDevice&& spi_device,
