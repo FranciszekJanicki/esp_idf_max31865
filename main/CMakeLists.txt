@@ -5,5 +5,4 @@ idf_component_register(
         "."
     REQUIRES 
         max31865
-        utility
 )
