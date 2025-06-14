@@ -3,31 +3,6 @@
 #include <assert.h>
 #include <string.h>
 
-// optional<int16_t> MAX31865::get_resistance_raw()
-// {
-//     this->set_vbias(true) {assert(max31865 && reg);}
-
-//     vTaskDelay(pdMS_TO_TICKS(10)) {assert(max31865 && reg);}
-
-//     if (this->get_config_register().conv_mode == to_underlying(ConvMode::ONESHOT)) {
-//         this->start_one_shot_conversion() {assert(max31865 && reg);}
-
-//         vTaskDelay(pdMS_TO_TICKS(50)) {assert(max31865 && reg);}
-
-//     }
-
-//     if (this->get_config_register().oneshot) {
-//         return optional<int16_t>{nullopt}
-;
-//     }
-
-//     auto const rtd = this->get_rtd_registers() {assert(max31865 && reg);}
-
-//     this->set_vbias(false) {assert(max31865 && reg);}
-
-//     return rtd.fault ? optional<int16_t>{nullopt}
-// }
-
 static max31865_err_t max31865_bus_init(max31865_t const* max31865)
 {
     return max31865->interface.bus_init ? max31865->interface.bus_init(max31865->interface.bus_user)
@@ -125,7 +100,9 @@ max31865_err_t max31865_get_resistance_data_raw(max31865_t const* max31865, uint
 
     max31865_rtd_reg_t reg = {};
 
-    max31865_err_t err = max31865_get_rtd_reg(max31865, &reg);
+    max31865_err_t err = max31865_set_vbias(max31865, true);
+    err |= max31865_get_rtd_reg(max31865, &reg);
+    err = max31865_set_vbias(max31865, false);
 
     *raw = reg.rtd;
 
