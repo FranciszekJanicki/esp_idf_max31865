@@ -19,5 +19,11 @@ clang-format-dry:
 		find $(COMPONENT_DIR) -iname "*.$$ext" -not -path "*/putrl_proto/*" -print0 | xargs -0 -r clang-format --dry-run -Werror -i; \
 	done
 
+.PHONY: clang_tidy
+clang_tidy:
+	for ext in h c cpp hpp; do \
+		find $(APP_DIR) -iname "*.$$ext" -print0 | xargs -0 -r clang-tidy -fix; \
+	done
+
 .PHONY: lint
-lint: clang-format-dry
+lint: clang-format-dry clang-tidy
